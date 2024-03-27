@@ -19,7 +19,13 @@ export const get = query({
       .collect();
 
     const serverIds = memberships.map((member) => member.serverId);
-    const servers = getAllOrThrow(ctx.db, serverIds);
-    return servers;
+    const servers = await getAllOrThrow(ctx.db, serverIds);
+
+    return Promise.all(
+      servers.map(async (server) => ({
+        ...server,
+        imageUrl: await ctx.storage.getUrl(server.imageId),
+      })),
+    );
   },
 });

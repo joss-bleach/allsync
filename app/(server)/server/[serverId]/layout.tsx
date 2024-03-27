@@ -10,6 +10,7 @@ interface ServerLayoutProps {
 
 const ServerLayout = ({ children }: ServerLayoutProps) => {
   const servers = useQuery(api.servers.get);
+  console.log(servers);
   return (
     <>
       <aside className="fixed h-full w-[75px]">SB</aside>
