@@ -19,8 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={GeistSans.className}>
-        <ToastProvider richColors />
-        <ClerkConvexProvider>{children}</ClerkConvexProvider>
+        <ClerkConvexProvider>
+          <ToastProvider richColors />
+          {children}
+        </ClerkConvexProvider>
       </body>
     </html>
   );

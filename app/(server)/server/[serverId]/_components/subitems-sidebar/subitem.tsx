@@ -1,14 +1,23 @@
 import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface SubitemProps {
   children: React.ReactNode;
+  isActive?: boolean;
 }
 
-export const Subitem = ({ children }: SubitemProps) => {
+export const Subitem = ({ children, isActive }: SubitemProps) => {
   return (
     <li className="w-full">
-      <Button className="flex h-auto w-full flex-row justify-start rounded-md bg-[#F7F7F8] py-2 text-[13px] text-[#5E5F6E] hover:bg-[#EBEBEB]/75">
+      <Button
+        disabled={isActive}
+        className={cn(
+          "flex h-auto w-full flex-row justify-start rounded-md py-2 text-[13px] disabled:cursor-default",
+          isActive
+            ? "bg-white text-[#14B8A6] shadow-sm hover:bg-white disabled:opacity-100"
+            : "bg-[#F7F7F8] text-[#5E5F6E] hover:bg-[#EBEBEB]/75",
+        )}
+      >
         {children}
       </Button>
     </li>
