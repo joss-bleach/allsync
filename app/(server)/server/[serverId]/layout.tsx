@@ -24,7 +24,7 @@ const ServerLayout = ({ children, params }: ServerLayoutProps) => {
           <ServerSidebar serverId={params.serverId} servers={servers} />
         </nav>
         <div className="w-[250px]">
-          <SubitemsSidebar />
+          <SubitemsSidebar serverId={params.serverId} />
         </div>
       </aside>
       <main className="pl-[325px]">{children}</main>
