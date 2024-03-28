@@ -10,15 +10,18 @@ import { SubitemsSidebar } from "./_components/subitems-sidebar";
 
 interface ServerLayoutProps {
   children: React.ReactNode;
+  params: {
+    serverId: string;
+  };
 }
 
-const ServerLayout = ({ children }: ServerLayoutProps) => {
+const ServerLayout = ({ children, params }: ServerLayoutProps) => {
   const servers = useQuery(api.servers.get);
   return (
     <div className="h-full">
       <aside className="fixed flex h-full flex-row">
         <nav className="w-[75px]">
-          <ServerSidebar />
+          <ServerSidebar serverId={params.serverId} servers={servers} />
         </nav>
         <div className="w-[250px]">
           <SubitemsSidebar />
