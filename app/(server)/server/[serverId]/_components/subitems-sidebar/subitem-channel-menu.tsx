@@ -5,7 +5,7 @@ interface SubitemChannelMenuProps {
 }
 
 // Hooks
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 // Convex
 import { Doc, Id } from "@/convex/_generated/dataModel";
@@ -13,7 +13,7 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 
 // Components
-import { Hash, Lock, Mic, Plus, Webcam } from "lucide-react";
+import { Hash, Lock, Mic, Webcam } from "lucide-react";
 import { Subitem } from "./subitem";
 import { Skeleton } from "@/components/ui/skeleton";
 import { redirect } from "next/navigation";
@@ -27,6 +27,7 @@ export const SubitemChannelMenu = ({ serverId }: SubitemChannelMenuProps) => {
   );
 
   const params = useParams();
+  const router = useRouter();
 
   if (channels === undefined) {
     return (
@@ -66,13 +67,15 @@ export const SubitemChannelMenu = ({ serverId }: SubitemChannelMenuProps) => {
       <ul className="w-full px-3 pt-6">
         <li className="flex flex-row justify-between px-4 pb-1 text-[12px] font-semibold text-[#5E5F6E]">
           Text Channels
-          <Plus size={16} />
         </li>
         {textChannels.map((channel) => {
           return (
             <Subitem
               key={channel._id}
               isActive={params.channelId === channel._id}
+              onClick={() =>
+                router.push(`/server/${serverId}/channel/${channel._id}`)
+              }
             >
               <span className="flex flex-1 flex-row items-center justify-between">
                 <span className="flex flex-row items-center">
@@ -89,13 +92,15 @@ export const SubitemChannelMenu = ({ serverId }: SubitemChannelMenuProps) => {
         <ul className="w-full px-3 pt-6">
           <li className="flex flex-row justify-between px-4 pb-1 text-[12px] font-semibold text-[#5E5F6E]">
             Audio Channels
-            <Plus size={16} />
           </li>
           {audioChannels.map((channel) => {
             return (
               <Subitem
                 key={channel._id}
                 isActive={params.channelId === channel._id}
+                onClick={() =>
+                  router.push(`/server/${serverId}/channel/${channel._id}`)
+                }
               >
                 <span className="flex flex-1 flex-row items-center justify-between">
                   <span className="flex flex-row items-center">
@@ -113,13 +118,15 @@ export const SubitemChannelMenu = ({ serverId }: SubitemChannelMenuProps) => {
         <ul className="w-full px-3 pt-6">
           <li className="flex flex-row justify-between px-4 pb-1 text-[12px] font-semibold text-[#5E5F6E]">
             Video Channels
-            <Plus size={16} />
           </li>
           {videoChannels.map((channel) => {
             return (
               <Subitem
                 key={channel._id}
                 isActive={params.channelId === channel._id}
+                onClick={() =>
+                  router.push(`/server/${serverId}/channel/${channel._id}`)
+                }
               >
                 <span className="flex flex-1 flex-row items-center justify-between">
                   <span className="flex flex-row items-center">

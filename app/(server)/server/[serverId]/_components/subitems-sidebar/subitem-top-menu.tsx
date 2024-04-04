@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { Subitem } from "./subitem";
 import { InviteToServer } from "./top-menu-items/invite-to-server";
+import { CreateChannel } from "./top-menu-items/create-channel";
 
 export const SubitemTopMenu = ({ serverId }: SubitemTopMenuProps) => {
   return (
@@ -38,12 +39,7 @@ export const SubitemTopMenu = ({ serverId }: SubitemTopMenuProps) => {
           Manage members
         </span>
       </Subitem>
-      <Subitem>
-        <span className="flex flex-row items-center justify-between">
-          <Plus size={16} className="mr-2" />
-          Create channel
-        </span>
-      </Subitem>
+      <CreateChannel serverId={serverId as Id<"servers">} />
     </ul>
   );
 };

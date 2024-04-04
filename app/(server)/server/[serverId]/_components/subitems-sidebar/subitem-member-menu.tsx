@@ -50,7 +50,6 @@ export const SubitemMemberMenu = ({ serverId }: SubitemMemberMenuProps) => {
     <ul className="w-full px-3 pt-6">
       <li className="flex flex-row justify-between px-4 pb-1 text-[12px] font-semibold text-[#5E5F6E]">
         Members
-        <Settings size={16} />
       </li>
       {members.map((member) => {
         if (user?.id === member.user?.clerkUser.id) {

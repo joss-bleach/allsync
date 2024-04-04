@@ -14,6 +14,7 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
+import type * as channel from "../channel.js";
 import type * as channels from "../channels.js";
 import type * as files from "../files.js";
 import type * as http from "../http.js";
@@ -31,6 +32,7 @@ import type * as users from "../users.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  channel: typeof channel;
   channels: typeof channels;
   files: typeof files;
   http: typeof http;
