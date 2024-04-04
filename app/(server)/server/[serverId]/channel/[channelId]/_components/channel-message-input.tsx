@@ -36,6 +36,10 @@ export const ChannelMessageInput = ({ channel }: ChannelMessageInputProps) => {
     values: z.infer<typeof channelMessageFormSchema>,
   ) => {
     try {
+      create({
+        channelId: channel._id,
+        content: values.content,
+      });
       form.reset();
     } catch (err) {
       toast.error("Error creating server. Please try again.");

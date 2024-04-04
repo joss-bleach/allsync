@@ -37,7 +37,7 @@ const ChannelPage = () => {
   return (
     <section className="flex h-full flex-col px-8 py-6">
       <ChannelHeader name={channel.name} type={channel.channelType} />
-      <ChannelMessages name={channel.name} />
+      <ChannelMessages channel={channel} />
       <ChannelMessageInput channel={channel} />
     </section>
   );

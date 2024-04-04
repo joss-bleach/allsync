@@ -67,3 +67,30 @@ export const getGuestRole = query({
     }
   },
 });
+
+export const getRole = query({
+  args: {
+    channelId: v.id("channels"),
+    userId: v.id("users"),
+  },
+  handler: async (ctx, args) => {
+    const user = await mustGetCurrentUser(ctx);
+    if (!user) {
+      throw new Error("Can't get current user.");
+    }
+
+    const channel = await ctx.db.get(args.channelId);
+    if (!channel) {
+      throw new Error("Channel not found");
+    }
+
+    const membership = await ctx.db
+      .query("memberships")
+      .withIndex("by_user_server", (q) =>
+        q.eq("userId", args.userId).eq("serverId", channel.serverId),
+      )
+      .unique();
+
+    return membership?.memberRole;
+  },
+});
