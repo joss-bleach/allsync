@@ -10,7 +10,6 @@ import { CreateInitialServer } from "./_components/create-initial-server";
 
 const InitPage = () => {
   const data = useQuery(api.memberships.get);
-  console.log(data);
 
   if (data === undefined) {
     return <FullPageLoader />;

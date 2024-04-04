@@ -7,6 +7,7 @@ import { SubitemChannelMenu } from "./subitem-channel-menu";
 // Components
 import { SubitemTopMenu } from "./subitem-top-menu";
 import { SubitemMemberMenu } from "./subitem-member-menu";
+import { Doc } from "@/convex/_generated/dataModel";
 
 export const SubitemsSidebar = ({ serverId }: SubitemsSidebarProps) => {
   return (

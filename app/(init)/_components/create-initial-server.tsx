@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 // Validation
 import { createServerFormSchema } from "@/lib/form-schemas";
@@ -28,13 +29,13 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 export const CreateInitialServer = () => {
   const [isMounted, setIsMounted] = useState<boolean>(false);
-  const [files, setFiles] = useState<File[]>([]);
 
   useEffect(() => {
     setIsMounted(true);
@@ -58,7 +59,6 @@ export const CreateInitialServer = () => {
     values: z.infer<typeof createServerFormSchema>,
   ) => {
     try {
-      console.log(values);
       const postUrl = await generateUploadUrl();
       const result = await fetch(postUrl, {
         method: "POST",
@@ -73,6 +73,7 @@ export const CreateInitialServer = () => {
       });
 
       form.reset();
+      router.push(`/server/${server}`);
       toast.success(`Successfully created ${values.name}`);
     } catch (err) {
       toast.error("Error creating server. Please try again.");
@@ -111,6 +112,7 @@ export const CreateInitialServer = () => {
                       placeholder="Upload an image for your server"
                       className="h-[40px] w-full cursor-pointer rounded-md border-[1px] border-[#D6D6D6] bg-white text-[13px] text-[#2F3037] placeholder:text-[#5E5F6E] focus:bg-[#D6D6D6]/10 focus-visible:ring-0 focus-visible:ring-offset-0"
                     />
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -127,11 +129,18 @@ export const CreateInitialServer = () => {
                         {...field}
                       />
                     </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
               <DialogFooter className="pt-6">
-                <Button type="submit">Submit</Button>
+                <Button variant="primary-teal" type="submit">
+                  {form.formState.isSubmitting ? (
+                    <Loader2 className="animate-spin" />
+                  ) : (
+                    "Create"
+                  )}
+                </Button>
               </DialogFooter>
             </form>
           </Form>

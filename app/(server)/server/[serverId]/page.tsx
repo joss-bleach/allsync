@@ -16,11 +16,9 @@ interface ServerPageProps {
 }
 
 const ServerPage = ({ params }: ServerPageProps) => {
-  console.log(params);
   const generalChannel = useQuery(api.channels.getGeneral, {
     serverId: params.serverId as Id<"servers">,
   });
-  console.log(generalChannel);
 
   if (generalChannel === undefined) {
     return <FullPageLoader />;

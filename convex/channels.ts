@@ -24,7 +24,9 @@ export const getGeneral = query({
 
     const channel = await ctx.db
       .query("channels")
-      .withSearchIndex("by_name", (q) => q.search("name", "general"))
+      .withSearchIndex("by_name", (q) =>
+        q.search("name", "general").eq("serverId", args.serverId),
+      )
       .unique();
     return channel;
   },

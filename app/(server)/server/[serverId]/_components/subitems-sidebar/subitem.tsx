@@ -4,13 +4,15 @@ import { cn } from "@/lib/utils";
 interface SubitemProps {
   children: React.ReactNode;
   isActive?: boolean;
+  onClick?: () => void;
 }
 
-export const Subitem = ({ children, isActive }: SubitemProps) => {
+export const Subitem = ({ children, isActive, onClick }: SubitemProps) => {
   return (
     <li className="w-full">
       <Button
         disabled={isActive}
+        onClick={onClick}
         className={cn(
           "flex h-auto w-full flex-row justify-start rounded-md py-2 text-[13px] disabled:cursor-default",
           isActive

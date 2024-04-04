@@ -27,7 +27,6 @@ export const SubitemChannelMenu = ({ serverId }: SubitemChannelMenuProps) => {
   );
 
   const params = useParams();
-  console.log(params);
 
   if (channels === undefined) {
     return (

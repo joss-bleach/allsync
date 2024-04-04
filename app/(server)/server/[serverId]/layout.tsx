@@ -17,6 +17,10 @@ interface ServerLayoutProps {
 
 const ServerLayout = ({ children, params }: ServerLayoutProps) => {
   const servers = useQuery(api.servers.get);
+  const server = servers?.find((server) => server._id === params.serverId);
+  if (!server) {
+    return null;
+  }
   return (
     <div className="h-full">
       <aside className="fixed flex h-full flex-row">

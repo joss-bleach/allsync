@@ -16,10 +16,12 @@ export default defineSchema({
   })
     .index("by_user", ["userId"])
     .index("by_server", ["serverId"])
-    .index("by_user_server", ["userId", "serverId"]),
+    .index("by_user_server", ["userId", "serverId"])
+    .index("by_user_server_role", ["userId", "serverId", "memberRole"]),
   servers: defineTable({
     creatorId: v.id("users"),
     name: v.string(),
+    inviteCode: v.string(),
     imageId: v.id("_storage"),
   }),
   channels: defineTable({
@@ -36,5 +38,6 @@ export default defineSchema({
     .index("by_server_channel_type", ["serverId", "channelType"])
     .searchIndex("by_name", {
       searchField: "name",
+      filterFields: ["serverId"],
     }),
 });

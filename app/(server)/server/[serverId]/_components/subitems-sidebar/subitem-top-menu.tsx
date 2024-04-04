@@ -1,4 +1,5 @@
 "use client";
+import { Doc, Id } from "@/convex/_generated/dataModel";
 
 interface SubitemTopMenuProps {
   serverId: string;
@@ -13,6 +14,7 @@ import {
   UsersRound,
 } from "lucide-react";
 import { Subitem } from "./subitem";
+import { InviteToServer } from "./top-menu-items/invite-to-server";
 
 export const SubitemTopMenu = ({ serverId }: SubitemTopMenuProps) => {
   return (
@@ -29,12 +31,7 @@ export const SubitemTopMenu = ({ serverId }: SubitemTopMenuProps) => {
           Server settings
         </span>
       </Subitem>
-      <Subitem>
-        <span className="flex flex-row items-center justify-between">
-          <UserRoundPlus size={16} className="mr-2" />
-          Invite people
-        </span>
-      </Subitem>
+      <InviteToServer serverId={serverId as Id<"servers">} />
       <Subitem>
         <span className="flex flex-row items-center justify-between">
           <UsersRound size={16} className="mr-2" />

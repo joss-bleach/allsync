@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 // Providers
 import { ClerkConvexProvider } from "@/providers/clerk-convex-provider";
 import { Toaster as ToastProvider } from "sonner";
+import ModalProvider from "@/providers/modal-provider";
 
 export default function RootLayout({
   children,
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={GeistSans.className}>
         <ClerkConvexProvider>
+          <ModalProvider />
           <ToastProvider richColors />
           {children}
         </ClerkConvexProvider>
