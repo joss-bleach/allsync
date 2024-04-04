@@ -31,7 +31,7 @@ const ServerLayout = ({ children, params }: ServerLayoutProps) => {
           <SubitemsSidebar serverId={params.serverId} />
         </div>
       </aside>
-      <main className="pl-[325px]">{children}</main>
+      <main className="h-full pl-[325px]">{children}</main>
     </div>
   );
 };

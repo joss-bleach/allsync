@@ -8,7 +8,7 @@ interface ChannelHeaderProps {
 
 export const ChannelHeader = ({ name, type }: ChannelHeaderProps) => {
   return (
-    <div className="w-full rounded-md bg-[#FAFAFB] px-5 py-5">
+    <div className="flex w-full rounded-md bg-[#FAFAFB] px-5 py-5">
       <h1 className="flex flex-row items-center gap-2 text-[15px] font-medium text-[#2F3037]">
         {type === "audio" ? (
           <Mic size={16} className="text-[#2F3037]" />

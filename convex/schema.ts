@@ -40,4 +40,9 @@ export default defineSchema({
       searchField: "name",
       filterFields: ["serverId"],
     }),
+  messages: defineTable({
+    content: v.string(),
+    channelId: v.id("channels"),
+    userId: v.id("users"),
+  }).index("by_channel", ["channelId"]),
 });

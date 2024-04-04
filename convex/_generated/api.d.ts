@@ -20,6 +20,8 @@ import type * as files from "../files.js";
 import type * as http from "../http.js";
 import type * as membership from "../membership.js";
 import type * as memberships from "../memberships.js";
+import type * as message from "../message.js";
+import type * as messages from "../messages.js";
 import type * as server from "../server.js";
 import type * as servers from "../servers.js";
 import type * as users from "../users.js";
@@ -39,6 +41,8 @@ declare const fullApi: ApiFromModules<{
   http: typeof http;
   membership: typeof membership;
   memberships: typeof memberships;
+  message: typeof message;
+  messages: typeof messages;
   server: typeof server;
   servers: typeof servers;
   users: typeof users;
