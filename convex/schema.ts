@@ -23,7 +23,7 @@ export default defineSchema({
     name: v.string(),
     inviteCode: v.string(),
     imageId: v.id("_storage"),
-  }),
+  }).index("by_invite_code", ["inviteCode"]),
   channels: defineTable({
     serverId: v.id("servers"),
     name: v.string(),

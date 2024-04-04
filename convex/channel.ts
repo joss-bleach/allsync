@@ -45,3 +45,19 @@ export const create = mutation({
     return channel;
   },
 });
+
+export const get = query({
+  args: { channelId: v.id("channels") },
+  handler: async (ctx, args) => {
+    const user = await mustGetCurrentUser(ctx);
+    if (!user) {
+      throw new Error("Can't get current user.");
+    }
+
+    const channel = await ctx.db.get(args.channelId);
+    if (!channel) {
+      throw new Error("Channel not found");
+    }
+    return channel;
+  },
+});

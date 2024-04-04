@@ -18,6 +18,7 @@ import type * as channel from "../channel.js";
 import type * as channels from "../channels.js";
 import type * as files from "../files.js";
 import type * as http from "../http.js";
+import type * as membership from "../membership.js";
 import type * as memberships from "../memberships.js";
 import type * as server from "../server.js";
 import type * as servers from "../servers.js";
@@ -36,6 +37,7 @@ declare const fullApi: ApiFromModules<{
   channels: typeof channels;
   files: typeof files;
   http: typeof http;
+  membership: typeof membership;
   memberships: typeof memberships;
   server: typeof server;
   servers: typeof servers;
